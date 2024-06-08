@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+<div class="box">
+  <h1>Login</h1>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul class="flashes">
+    {% for message in messages %}
+    <li style="color: red;">{{message}}</li>
+    {% endfor %}
+  </ul>
+
+  {% elif logged_in %}
+  <p style="color: green;">Already logged in.</p>
+  {% endif %}
+  {% endwith %}
+
+  {{ render_form(form) }}
+</div>
+
+{% endblock %}
